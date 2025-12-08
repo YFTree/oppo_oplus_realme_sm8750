@@ -601,8 +601,7 @@ jobs:
           echo "Clang版本: $CLANG_VERSION"
           echo "LLD版本: $LLD_VERSION"
           pahole_version=$(pahole --version 2>/dev/null | head -n1); [ -z "$pahole_version" ] && echo "pahole版本：未安装" || echo "pahole版本：$pahole_version"
-          patch -p1 -F 3 < https://raw.githubusercontent.com/Anatdx/hymo/refs/heads/master/patch/hymofs.patch
-          echo "CONFIG_HYMOFS=y" >> ./common/arch/arm64/configs/gki_defconfig # 写入defconfig配置项
+          
           export CCACHE_LOGFILE="${{ github.workspace }}/kernel_workspace/ccache.log"
           export CCACHE_COMPILERCHECK="none"
           export CCACHE_BASEDIR="${{ github.workspace }}"
