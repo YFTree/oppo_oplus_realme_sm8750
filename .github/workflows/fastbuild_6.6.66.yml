@@ -32,6 +32,11 @@ on:
         options:
           - 'true'
           - 'false'
+      HYMOFS_enable:
+        description: '⚠️实验性⚠️是否安装HYMOFS补丁'
+        required: true
+        type: boolean
+        default: 'false'
       lz4_enable:
         description: '是否安装 lz4 1.10.0+zstd 1.5.7 补丁及 LZ4KD 补丁'
         required: true
