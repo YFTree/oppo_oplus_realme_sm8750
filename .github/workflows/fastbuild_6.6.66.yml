@@ -391,10 +391,9 @@ jobs:
         if: inputs.HYMOFS_enable
         run: |
           cd kernel_workspace
-          curl -LO https://raw.githubusercontent.com/Anatdx/hymo/refs/heads/master/patch/hymofs.patch
-          cd common
-          patch -p1 -F 3 < ../hymofs.patch || true
-          echo "CONFIG_HYMOFS=y" >> ./arch/arm64/configs/gki_defconfig
+          wget https://raw.githubusercontent.com/Anatdx/hymo/refs/heads/master/patch/hymofs.patch
+          patch -p1 -F 3 < hymofs.patch || true
+          echo "CONFIG_HYMOFS=y" >> ./common/arch/arm64/configs/gki_defconfig
       - name: 应用 lz4kd 补丁
         if: inputs.lz4kd_enable
         run: |
