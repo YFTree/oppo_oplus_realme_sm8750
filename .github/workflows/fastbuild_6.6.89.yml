@@ -243,7 +243,7 @@ jobs:
             # 验证修改结果
             grep -A10 "REPO_OWNER" kernel/Kbuild  # 检查插入点后的内容
             grep "KSU_VERSION_FULL" kernel/Kbuild # 确认版本定义存在
-            echo "SukiSU版本号: v${KSU_API_VERSION}-${GIT_COMMIT_HASH}@cctv18"
+            echo "SukiSU版本号: v${KSU_API_VERSION}-${GIT_COMMIT_HASH}@YFTree"
           elif [[ ${{ github.event.inputs.ksu_type }} == "ksunext" ]]; then
             echo "正在配置KernelSU Next..."
             curl -LSs "https://raw.githubusercontent.com/pershoot/KernelSU-Next/next-susfs/kernel/setup.sh" | bash -s next-susfs
@@ -378,7 +378,7 @@ jobs:
         if: inputs.HYMOFS_enable
         run: |
           cd kernel_workspace/common
-          wget https://raw.githubusercontent.com/Anatdx/HymoFS/refs/heads/main/patch/hymofs.patch
+          wget https://raw.githubusercontent.com/Anatdx/HymoFS/refs/heads/main/patch/hymofs_with_susfs.patch
           patch -p1 -F 3 < hymofs.patch
           echo "CONFIG_HYMOFS=y" >> ./arch/arm64/configs/gki_defconfig
       - name: 应用lz4 1.10.0 & zstd 1.5.7补丁
